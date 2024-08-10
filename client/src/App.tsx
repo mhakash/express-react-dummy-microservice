@@ -62,7 +62,10 @@ const ListComments = (props: PropsWithChildren<{ comments: Comment[] }>) => {
           key={comment.id}
           className="border border-gray-300 rounded p-2 mt-2"
         >
-          {comment.content}
+          {comment.status === "pending" &&
+            "This comment is awaiting moderation"}
+          {comment.status === "rejected" && "This comment has been rejected"}
+          {comment.status === "approved" && comment.content}
         </li>
       ))}
     </ul>
